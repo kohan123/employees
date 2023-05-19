@@ -17,6 +17,15 @@ onValueChange = (e) => {
     })
 }
 
+onSubmit = (e) => {
+    e.preventDefault()
+    this.props.onAddNewItem(this.state.name, this.state.salary)
+    this.setState({
+        name: '',
+        salary: ''
+    })
+}
+
    render () {
 
     const {name, salary} = this.state;
@@ -25,7 +34,8 @@ onValueChange = (e) => {
         <div className="app-add-form">
             <h3>Добавьте нового сотрудника</h3>
             <form
-                className="add-form d-flex">
+                className="add-form d-flex"
+                onSubmit={this.onSubmit}>    
                 <input type="text"
                     className="form-control new-post-label"
                     placeholder="Как его зовут?"
